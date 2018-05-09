@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Electron Holidays</title>
+  </head>
+  <body>
+    <h1>Voici l'heure:</h1>
+    <div id="horloge"></div>
+
+    <h1>Voici une image moche:</h1>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1gAWhMOxksx2WzQU8D73nn56eaTQCXBEb9FZ4prTYciOk2DK2yw" />
+
+    <p>
+      Cordialement,
+      <br />
+      <br />
+      Maxence
+    </p>
+    <p>
+      P.S. Bonnes vacances...
+    </p>
+
+    <script type="text/javascript">
+      var date = new Date();
+      var heure = date.getHours();
+      var minute = date.getMinutes();
+      var seconde = date.getSeconds();
+      var f = function () {
+        if (seconde < 59)
+          seconde++;
+        else { minute++; seconde = 00; }
+        if (minute > 59) { heure++; minute = 00; }
+        document.getElementById("horloge").textContent = heure + ":" + minute;
+        setTimeout(ff, 1000);
+      }
+      setTimeout(f, 1000);
+    </script>
+    <script>
+      // You can also require other files to run in this process
+      require('./renderer.js')
+    </script>
+  </body>
+</html>
